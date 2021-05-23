@@ -2,13 +2,16 @@
 
 require_relative "cogni2/version"
 
+require 'typhoeus'
 require 'cogni2/token_gain'
+require 'cogni2/user_info'
 
 module Cogni2
   class Error < StandardError; end
 
   class Client
     include TokenGain
+    include UserInfo
 
     attr_reader :options
     
