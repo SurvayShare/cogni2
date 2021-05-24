@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require_relative "cogni2/version"
+require_relative 'cogni2/version'
 
 require 'typhoeus'
 require 'cogni2/token_gain'
@@ -14,9 +14,10 @@ module Cogni2
     include UserInfo
 
     attr_reader :options
-    
+
     def initialize(**options)
       @options = options
+      puts options
     end
 
     def push_options(**options)

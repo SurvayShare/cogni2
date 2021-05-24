@@ -9,14 +9,14 @@ module Cogni2
 
     def gain_token(code)
       response = Typhoeus.post(oauth_url,
-        headers: {'Content-Type'=> 'application/x-www-form-urlencoded'},
-        body: {
-         grant_type: 'authorization_code', 
-         client_id: options[:client_id],
-         code: code,
-         redirect_uri: options[:redirect_uri]
-      })
-  
+                               headers: { 'Content-Type' => 'application/x-www-form-urlencoded' },
+                               body: {
+                                 grant_type: 'authorization_code',
+                                 client_id: options[:client_id],
+                                 code: code,
+                                 redirect_uri: options[:redirect_uri]
+                               })
+
       JSON.parse(response.body)
     end
 
