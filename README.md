@@ -1,8 +1,6 @@
 # Cogni2
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/cogni2`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
+Ruby gem for aws cognito.
 
 ## Installation
 
@@ -22,7 +20,31 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+### Client
+
+```ruby
+Cogni2::Client.new(**options)
+```
+
+```ruby
+Options:
+
+domain: Domain of your congito user pool
+client_id: Client id
+redirect_url: The login redirect url you put in the congito client setting page
+
+```
+
+### Gain token
+
+```ruby
+# @param string code
+# code would be redirected as a parameter to your redirect url
+Cogni2::Client.new(**options).gain_token(code)
+
+# @param string refresh_token
+Cogni2::Client.new(**options).request_new_token(refresh_token)
+```
 
 ## Development
 
