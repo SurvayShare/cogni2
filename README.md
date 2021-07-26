@@ -23,16 +23,7 @@ Or install it yourself as:
 ### Client
 
 ```ruby
-Cogni2::Client.new(**options)
-```
-
-```ruby
-Options:
-
-domain: Domain of your congito user pool
-client_id: Client id
-redirect_url: The login redirect url you put in the congito client setting page
-
+Cogni2::Client.new(domain: 'https://xx.com', client_id: '123XABC', redirect_url: 'https://xx.com/callback/auth')
 ```
 
 ### Gain token
