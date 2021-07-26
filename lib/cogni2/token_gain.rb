@@ -9,7 +9,7 @@ module Cogni2
 
     def gain_token(code)
       response = reuqest(oauth_url, :POST,
-                         { 'Content-Type' => 'application/x-www-form-urlencoded' },
+                         default_content_type_header,
                          body: {
                            grant_type: 'authorization_code',
                            client_id: options[:client_id],
@@ -20,8 +20,8 @@ module Cogni2
     end
 
     def request_new_token(refresh_token)
-      response = reuqest(oauth_url,
-                         { 'Content-Type' => 'application/x-www-form-urlencoded' },
+      response = reuqest(oauth_url, :POST,
+                         default_content_type_header,
                          body: {
                            grant_type: 'refresh_token',
                            client_id: options[:client_id],
@@ -32,6 +32,10 @@ module Cogni2
     end
 
     private
+
+    def default_content_type_header
+      { 'Content-Type' => 'application/x-www-form-urlencoded' }
+    end
 
     def oauth_url
       "#{options[:domain]}#{OAUTH_PATH}"
