@@ -9,9 +9,9 @@ require 'cogni2/user_info'
 module Cogni2
   class Error < StandardError; end
 
-  class ConfigurationError < StandardError; end
+  class ConfigurationError < Error; end
 
-  class CodeError < StandardError; end
+  class CodeError < Error; end
 
   class Client
     include TokenGain
