@@ -8,28 +8,27 @@ module Cogni2
     OAUTH_PATH = '/oauth2/token'
 
     def gain_token(code)
-      response = Typhoeus.post(oauth_url,
-                               headers: { 'Content-Type' => 'application/x-www-form-urlencoded' },
-                               body: {
-                                 grant_type: 'authorization_code',
-                                 client_id: options[:client_id],
-                                 code: code,
-                                 redirect_uri: options[:redirect_uri]
-                               })
-
-      JSON.parse(response.body)
+      response = reuqest(oauth_url, :POST,
+                         { 'Content-Type' => 'application/x-www-form-urlencoded' },
+                         body: {
+                           grant_type: 'authorization_code',
+                           client_id: options[:client_id],
+                           code: code,
+                           redirect_uri: options[:redirect_uri]
+                         })
+      JSON.parse(response.body.to_s)
     end
 
     def request_new_token(refresh_token)
-      response = Typhoeus.post(oauth_url,
-                               headers: { 'Content-Type' => 'application/x-www-form-urlencoded' },
-                               body: {
-                                 grant_type: 'refresh_token',
-                                 client_id: options[:client_id],
-                                 refresh_token: refresh_token
-                               })
+      response = reuqest(oauth_url,
+                         { 'Content-Type' => 'application/x-www-form-urlencoded' },
+                         body: {
+                           grant_type: 'refresh_token',
+                           client_id: options[:client_id],
+                           refresh_token: refresh_token
+                         })
 
-      JSON.parse(response.body)
+      JSON.parse(response.body.to_s)
     end
 
     private
